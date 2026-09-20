@@ -1,6 +1,6 @@
 from chunker import TextChunker
 from models import Document
-from search import SimpleKeywordSearch , EmptyQueryError
+from search import SimpleKeywordSearch 
 
 doc = [
     'hi AI my forname is Arian',
@@ -20,7 +20,7 @@ print("arian" in search)
 
 try:
     search.search("   ")  # کوئری خالی با فاصله
-except EmptyQueryError as e:
+except ValueError as e:
     print(f"✅ ارور سفارشی با موفقیت فعال شد: {e}")
 
 file_doc = Document.from_file('sample.txt',10)
