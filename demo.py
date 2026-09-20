@@ -14,7 +14,7 @@ chunk_doc = TextChunker()
 chunk_list = chunk_doc.split(main_doc)
 
 search = SimpleKeywordSearch()
-search.add_documents(chunk_list)
+search.add(chunk_list)
 
 print("arian" in search)
 

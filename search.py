@@ -6,11 +6,11 @@ class Basesearchengine(ABC):
     def __init__(self):
         self.documents = []
 
-    def add_document(self,doc):
-        self.documents.append(doc)
-
-    def add_documents(self,docs):
-        self.documents.extend(docs)
+    def add(self, document):
+        if isinstance(document, list):
+            self.documents.extend(document)
+        else:
+            self.documents.append(document)
 
     def __len__(self) ->int :
         return len(self.documents)
