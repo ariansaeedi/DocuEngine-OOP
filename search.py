@@ -1,26 +1,30 @@
 from abc import ABC, abstractmethod
 
 
-class EmptyQueryError(Exception):
-    pass
+
 class Basesearchengine(ABC):
     def __init__(self):
         self.documents = []
+
     def add_document(self,doc):
         self.documents.append(doc)
+
     def add_documents(self,docs):
         self.documents.extend(docs)
+
     def __len__(self) ->int :
         return len(self.documents)
+    
     @abstractmethod
     def search(self,query:str):
         pass
+    
 class SimpleKeywordSearch(Basesearchengine):
     def __init__(self):
         super().__init__()
     def search(self,query:str):
         if not query or not query.strip() :
-            raise EmptyQueryError('query is empty')
+            raise ValueError('query is empty')
         results =[]
         query_words = query.split()
 
